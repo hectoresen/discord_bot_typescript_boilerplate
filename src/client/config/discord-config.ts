@@ -1,4 +1,5 @@
 import { ActivityType, ClientOptions, IntentsBitField } from 'discord.js';
+import { secretConfigService } from '../../common/secret-config.service';
 
 export const discordClientConfig: ClientOptions = {
   intents: [
@@ -19,5 +20,5 @@ export const discordClientConfig: ClientOptions = {
 };
 
 export const discordClientAuth = {
-  token: process.env.DISCORD_TOKEN
+  token: secretConfigService.discordConfig.token
 };

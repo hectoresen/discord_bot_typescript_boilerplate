@@ -15,6 +15,8 @@
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.9.1",
+    "@typescript-eslint/eslint-plugin": "^8.4.0",
+    "@typescript-eslint/parser": "^8.4.0",
     "eslint": "^9.9.1",
     "globals": "^15.9.0",
     "tsx": "^4.19.0",
@@ -22,7 +24,7 @@
   },
   "dependencies": {
     "discord.js": "^14.16.1",
-    "enmap": "^6.0.2",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "enmap": "^6.0.2"
   }
 }

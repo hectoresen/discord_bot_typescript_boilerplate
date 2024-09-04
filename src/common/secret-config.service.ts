@@ -38,7 +38,7 @@ class SecretConfigService implements SecretConfigServiceInterface{
   get discordConfig() {
     return {
       token: this.getString('DISCORD_TOKEN'),
-      clientId: this.getString('CLIENT_ID'),
+      clientId: this.getString('DISCORD_CLIENT_ID'),
     };
   }
 }
