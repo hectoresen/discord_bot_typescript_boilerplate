@@ -6,7 +6,9 @@ export const discordClientConfig: ClientOptions = {
     // https://discord.com/developers/docs/topics/gateway#list-of-intents
     IntentsBitField.Flags.Guilds,
     IntentsBitField.Flags.GuildMessages,
+    IntentsBitField.Flags.GuildMembers,
     IntentsBitField.Flags.GuildVoiceStates,
+    IntentsBitField.Flags.GuildPresences
   ],
   presence: {
     status: 'online',

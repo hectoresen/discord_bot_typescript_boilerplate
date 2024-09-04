@@ -16,12 +16,23 @@ Default template to start projects with discord.js
 
 ---
 
-### Customizing your bot
+## Customizing your bot
 We will configure your presence and messages that are displayed as a preview of the bot, as well as other parameters. Cooming soon
 
+### Turn user tracking on or off
+
+It tracks your server members every 5 minutes, in the future this time can be configured.
+
+You can enable or disable user tracking by adding false or true to the `DISCORD_USER_TRACIKING` environment variable depending on your needs, in the future this could write relevant data about your server members to a database or other providers.
+
+Currently it will only write to the console a list of users who are online or offline, you can skip this tracking by setting false as the value of the environment variable.
+
+For this functionality to work correctly you must go to the Discord developer portal and activate `presence intent` and server `members intent` in your application. [Discord developer portal](https://discord.com/developers/applications).
 
 ### Adding commands
 We will add different commands. Cooming soon
 
 ### Obtaining data from our users
 Cooming soon
+
+---

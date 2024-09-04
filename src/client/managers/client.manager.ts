@@ -6,7 +6,7 @@ export default class ClientManager implements ClientInterface {
   private client: DiscordClient;
 
   constructor () {
-    this.client = new DiscordClient();
+    this.client = DiscordClient.getInstance();
   };
 
   public async initialize(): Promise<void> {

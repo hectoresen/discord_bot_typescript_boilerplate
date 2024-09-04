@@ -35,10 +35,27 @@ class SecretConfigService implements SecretConfigServiceInterface{
     return value.toString().replace(/\n/g, '\n');
   }
 
+  private getBoolean(key: string, defaultValue: boolean = false): boolean {
+    const value = process.env[key];
+    if (value === undefined) {
+      new ConsoleStatusHandler('🤖', `There was an error getting a key - ${key}`, 'error');
+      return defaultValue;
+    }
+
+    try {
+      return JSON.parse(value.toLowerCase());
+    } catch (error) {
+      new ConsoleStatusHandler('🤖', `Invalid boolean value for key - ${key}: ${value} - ${error}`, 'error');
+      return defaultValue;
+    }
+  }
+
   get discordConfig() {
     return {
       token: this.getString('DISCORD_TOKEN'),
       clientId: this.getString('DISCORD_CLIENT_ID'),
+      guildId: this.getString('DISCORD_GUILD_ID'),
+      userTracking: this.getBoolean('DISCORD_USER_TRACKING')
     };
   }
 }

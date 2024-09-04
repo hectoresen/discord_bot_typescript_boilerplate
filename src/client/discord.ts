@@ -8,29 +8,36 @@ import CommandHandler from '../commands/handler';
 import EventHandler from '../events/handler';
 
 export default class DiscordClient {
+  private static instance: DiscordClient;
   private client: ExtendedClient;
   private botIcon: string = '🤖';
   private configService: SecretConfigServiceInterface;
   private commandHandler: CommandHandler;
   private eventHandler: EventHandler;
 
-  constructor() {
+  private constructor() {
     this.client = new Client(discordClientConfig);
     this.configService = secretConfigService;
     this.commandHandler = CommandHandler.getInstance();
     this.eventHandler = new EventHandler(this.client, this.commandHandler);
   }
 
-  public async initialize (): Promise<void> {
+  public static getInstance(): DiscordClient {
+    if (!DiscordClient.instance) {
+      DiscordClient.instance = new DiscordClient();
+    }
+    return DiscordClient.instance;
+  }
+
+  public async initialize(): Promise<void> {
     await this.login();
     await this.loadCommands();
     await this.loadEvents();
   }
 
   private async login(): Promise<void> {
-    //TOD@ login
     new ConsoleStatusHandler(this.botIcon, 'Client is connecting...', 'loading');
-    
+
     await this.client.login(this.configService.discordConfig.token)
       .then(() => new ConsoleStatusHandler(this.botIcon, `${this.client.user?.username} is running`, 'ok'))
       .catch((error: DiscordAPIError) => new ConsoleStatusHandler(this.botIcon, `Bot login error - ${error}`, 'error'));
@@ -64,7 +71,7 @@ export default class DiscordClient {
           this.client.once(event.data.name, (interaction: any) => {
             console.log(event.data.name);
             this.eventHandler.execute(event.data.name, interaction);
-          }); 
+          });
         } else {
           this.client.on(event.data.name, (interaction: any) => {
             this.eventHandler.execute(event.data.name, interaction);
@@ -76,5 +83,10 @@ export default class DiscordClient {
     } catch (error) {
       new ConsoleStatusHandler(this.botIcon, `An error occurred while loading the commands - ${error}`, 'error');
     }
+  }
+
+  // Provide access to the Client instance
+  public getClient(): ExtendedClient {
+    return this.client;
   }
 }
