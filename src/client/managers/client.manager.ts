@@ -1,7 +1,7 @@
 import DiscordClient from '../discord';
-import ClientInterface from './interfaces/client.interface';
+import ClientManagerInterface from './interfaces/client.interface';
 
-export default class ClientManager implements ClientInterface {
+export default class ClientManager implements ClientManagerInterface {
 
   private client: DiscordClient;
 

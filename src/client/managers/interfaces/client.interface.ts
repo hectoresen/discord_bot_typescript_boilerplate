@@ -1,3 +1,3 @@
-export default interface ClientInterface {
+export default interface ClientManagerInterface {
     initialize(): Promise<void>
 };
