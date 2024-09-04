@@ -8,7 +8,7 @@ const interactionCreateEvent = {
     once: false,
   },
   execute: async (client: ExtendedClient, interaction: any) => {
-    const commandHandler = new CommandHandler();
+    const commandHandler = CommandHandler.getInstance();
     const command = commandHandler.getCommands().get(interaction.commandName);
 
     if (!command) return;

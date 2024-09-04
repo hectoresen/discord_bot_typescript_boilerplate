@@ -17,7 +17,7 @@ export default class DiscordClient {
   constructor() {
     this.client = new Client(discordClientConfig);
     this.configService = secretConfigService;
-    this.commandHandler = new CommandHandler();
+    this.commandHandler = CommandHandler.getInstance();
     this.eventHandler = new EventHandler(this.client, this.commandHandler);
   }
 
