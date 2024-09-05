@@ -71,4 +71,4 @@ Cooming soon
 ---
 
 ### Auto moderation
-Cooming soon
+Discord currently offers several self-moderation features. It is necessary to investigate which auto-moderation options would not be included in this integration to develop an automatic moderator that offers advantages over Discord's native features. In the meantime, you can access auto-moderation on your server by going to: Server Settings -> Automod.
