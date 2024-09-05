@@ -1,4 +1,4 @@
-import { CommandInteraction, EmbedBuilder, SlashCommandBuilder, GuildMember } from 'discord.js';
+import { CommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import ICommand from '../../interfaces/command.interface';
 import ExtendedClient from '../../../client/interfaces/discord-extended.interface';
 import { secretConfigService } from 'src/common/secret-config.service';
@@ -44,7 +44,6 @@ const kickCommand: ICommand = {
       return interaction.reply('User not found in the guild.');
     }
 
-    
     try {
       await memberToKick.kick(reason.value.toString());
 
