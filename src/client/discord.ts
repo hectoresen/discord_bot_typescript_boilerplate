@@ -6,6 +6,7 @@ import { secretConfigService } from '../common/secret-config.service';
 import SecretConfigServiceInterface from '../common/interfaces/secret-config-service.interface';
 import CommandHandler from '../commands/handler';
 import EventHandler from '../events/handler';
+import SettingsService from 'src/common/settings.service';
 
 export default class DiscordClient {
   private static instance: DiscordClient;
@@ -14,6 +15,7 @@ export default class DiscordClient {
   private configService: SecretConfigServiceInterface;
   private commandHandler: CommandHandler;
   private eventHandler: EventHandler;
+  private discordSettings: any = null
 
   private constructor() {
     this.client = new Client(discordClientConfig);
@@ -30,13 +32,14 @@ export default class DiscordClient {
   }
 
   public async initialize(): Promise<void> {
+    this.discordSettings = await SettingsService.getInstance().getDiscordSettings()
     await this.login();
     await this.loadCommands();
     await this.loadEvents();
   }
 
   private async login(): Promise<void> {
-    new ConsoleStatusHandler(this.botIcon, 'Client is connecting...', 'loading');
+    new ConsoleStatusHandler(this.discordSettings.consoleBotIconLogs, 'Client is connecting...', 'loading');
 
     await this.client.login(this.configService.discordConfig.token)
       .then(() => new ConsoleStatusHandler(this.botIcon, `${this.client.user?.username} is running`, 'ok'))
@@ -44,7 +47,7 @@ export default class DiscordClient {
   }
 
   private async loadCommands(): Promise<void> {
-    new ConsoleStatusHandler(this.botIcon, 'Loading commands..', 'loading');
+    new ConsoleStatusHandler(this.discordSettings.consoleBotIconLogs, 'Loading commands..', 'loading');
 
     const commands = await this.commandHandler.getCommandsFromDirectory();
 

@@ -1,12 +1,17 @@
 import 'dotenv/config';
 import { ConsoleStatusHandler } from './console.status.handler';
 import SecretConfigServiceInterface from './interfaces/secret-config-service.interface';
+import SettingsServiceInterface from './interfaces/settings-service.interface';
+import SettingsService from './settings.service';
 
 class SecretConfigService implements SecretConfigServiceInterface{
   private static instance: SecretConfigService;
+  private discordSettings: SettingsServiceInterface
 
   // Private constructor to avoid instantiation outside the class
-  private constructor() {}
+  private constructor() {
+    this.discordSettings = SettingsService.getInstance()
+  }
 
   // Method to get the single instance
   public static getInstance(): SecretConfigService {
