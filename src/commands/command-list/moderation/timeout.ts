@@ -9,7 +9,7 @@ const roles = secretConfigService.discordRoles;
 const timeoutCommand: ICommand = {
   data: new SlashCommandBuilder()
     .setName('timeout')
-    .setDescription('Mute a user for a specified amount of time')
+    .setDescription('Mute a user for a specified amount of time (Administrators or moderators only)')
     .addUserOption(option =>
       option
         .setName('target')

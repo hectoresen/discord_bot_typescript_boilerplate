@@ -9,7 +9,7 @@ const roles = secretConfigService.discordRoles;
 const kickCommand: ICommand = {
   data: new SlashCommandBuilder()
     .setName('kick')
-    .setDescription('Kick a user from the server')
+    .setDescription('Kick a user from the server (Administrators or moderators only)')
     .addUserOption(option =>
       option
         .setName('target')
