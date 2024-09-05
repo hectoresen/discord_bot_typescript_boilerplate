@@ -50,7 +50,7 @@ const kickCommand: ICommand = {
       const userDisplayName = userTarget.user.globalName || userTarget.user.username || 'Unknown User';
 
       const embed = new EmbedBuilder()
-        .setColor([0, 153, 255])
+      .setColor([255, 102, 0])
         .setTitle('User Kicked')
         .addFields(
           { name: 'Reason', value: reason.value.toString(), inline: true },
