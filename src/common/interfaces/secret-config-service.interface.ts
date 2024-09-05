@@ -5,4 +5,9 @@ export default interface SecretConfigServiceInterface {
         guildId: string;
         userTracking: boolean;
     };
+
+    readonly discordRoles: {
+        adminRoleId: string;
+        moderatorRoleId: string;
+    }
 };

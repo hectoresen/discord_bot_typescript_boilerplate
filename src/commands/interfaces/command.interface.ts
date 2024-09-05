@@ -1,7 +1,7 @@
-import { CommandInteraction, SlashCommandBuilder } from 'discord.js';
+import { CommandInteraction, SlashCommandBuilder, SlashCommandOptionsOnlyBuilder, SlashCommandSubcommandBuilder, SlashCommandSubcommandGroupBuilder } from 'discord.js';
 import ExtendedClient from '../../client/interfaces/discord-extended.interface';
 
 export default interface ICommand {
-    data: Omit<SlashCommandBuilder, 'addSubcommand' | 'addSubcommandGroup'>;
+    data: SlashCommandBuilder | SlashCommandSubcommandBuilder | SlashCommandSubcommandGroupBuilder | SlashCommandOptionsOnlyBuilder;
     run: (client: ExtendedClient, interaction: CommandInteraction) => void;
 };

@@ -4,7 +4,7 @@ import SecretConfigServiceInterface from './interfaces/secret-config-service.int
 import SettingsServiceInterface from './interfaces/settings-service.interface';
 import SettingsService from './settings.service';
 
-class SecretConfigService implements SecretConfigServiceInterface{
+class SecretConfigService implements SecretConfigServiceInterface {
   private static instance: SecretConfigService;
   private discordSettings: SettingsServiceInterface
 
@@ -62,6 +62,13 @@ class SecretConfigService implements SecretConfigServiceInterface{
       guildId: this.getString('DISCORD_GUILD_ID'),
       userTracking: this.getBoolean('DISCORD_USER_TRACKING')
     };
+  }
+
+  get discordRoles() {
+    return {
+      adminRoleId: this.getString('DISCORD_ADMIN_ROLE_ID'),
+      moderatorRoleId: this.getString('DISCORD_MODERATOR_ROLE_ID')
+    }
   }
 }
 

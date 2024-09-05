@@ -50,5 +50,25 @@ For this functionality to work correctly you must go to the Discord developer po
 - ### Adding commands
 We will add different commands. Cooming soon
 
+---
+
+## Moderation
+
+This bot has moderation commands that can be executed by users with administrator or moderator roles.
+
+To enable these roles, go to your Discord server, in the case of an administrator role make sure you check the Administrator box, for moderation roles make sure they have permissions to kick, mute or ban a user, otherwise they will not be able to run said commands due to lack of permissions.
+
+Once you have the roles created, copy their identifiers and paste them into the .env file as values ​​of the `DISCORD_ADMIN_ROLE_ID` and `DISCORD_MODERATOR_ROLE_ID` variables respectively.
+
+Restart the bot to make the changes effective.
+
+> [!IMPORTANT]
+> Please note that the bot will only be able to kick other members of the server with roles lower than its own. A moderator cannot kick another moderator or administrator. An administrator cannot kick out other administrators, but he can kick out other moderators. Both roles will be able to kick out all members with lower roles. Make sure you set this up correctly on your discord server
+
+- ### Moderation logs
+Cooming soon
 
 ---
+
+### Auto moderation
+Cooming soon
