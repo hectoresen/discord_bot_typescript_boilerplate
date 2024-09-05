@@ -41,5 +41,3 @@ export default class SettingsService {
     return this.settings;
   }
 }
-
-

@@ -39,6 +39,7 @@ export default class DiscordClient {
   }
 
   private async login(): Promise<void> {
+
     new ConsoleStatusHandler(this.discordSettings.consoleBotIconLogs, 'Client is connecting...', 'loading');
 
     await this.client.login(this.configService.discordConfig.token)

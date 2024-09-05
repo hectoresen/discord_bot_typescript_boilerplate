@@ -1,4 +1,11 @@
 {
   "consoleBotIconLogs": "🤖",
-  "servicesIconLogs": "💾"
+  "servicesIconLogs": "💾",
+  "botStatus": "online",
+  "activities": [
+    {
+      "name": "/help",
+      "type": "Listening"
+    }
+  ]
 }

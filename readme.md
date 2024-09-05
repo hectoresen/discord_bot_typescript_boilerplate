@@ -17,7 +17,22 @@ Default template to start projects with discord.js
 ---
 
 ## Customizing your bot
-We will configure your presence and messages that are displayed as a preview of the bot, as well as other parameters. Cooming soon
+Customization options will be added over time, at the moment you have the following options available:
+
+> [!NOTE]
+> Certain customizations are covered by discord. At all points you will find a link to the official documentation with a list to consult the supported configuration values
+
+- ### Presence
+
+ #### Status
+You can configure the presence of your bot in the `discord.settings.json` file.
+In this file you will find different variables such as botStatus where you can configure its value as online or AFK among others.
+
+You will find all the values ​​​​supported by discord in this link: [Presence](https://discord.js.org/docs/packages/discord.js/14.16.1/PresenceStatus:TypeAlias).
+
+#### Activities
+To modify the activity status of the bot, go to the `discord.settings.json` file, where you can modify the name of the activity and the type of activity.
+As a name you can set any value, however for the type of activity (type) you must be strict, only certain values ​​can be added such as Listening, Playing, Watching, etc. You can see the full list here: [Activities](https://discord-api-types.dev/api/discord-api-types-v10/enum/ActivityType).
 
 - ### Turn user tracking on or off
 
@@ -35,7 +50,5 @@ For this functionality to work correctly you must go to the Discord developer po
 - ### Adding commands
 We will add different commands. Cooming soon
 
-- ### Obtaining data from our users
-Cooming soon
 
 ---

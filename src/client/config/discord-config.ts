@@ -1,4 +1,14 @@
 import { ActivityType, ClientOptions, IntentsBitField } from 'discord.js';
+import SettingsService from 'src/common/settings.service';
+
+const activityTypeMap: { [key: string]: ActivityType } = {
+  'Playing': ActivityType.Playing,
+  'Streaming': ActivityType.Streaming,
+  'Listening': ActivityType.Listening,
+  'Watching': ActivityType.Watching,
+  'Custom': ActivityType.Custom,
+  'Competing': ActivityType.Competing
+};
 
 export const discordClientConfig: ClientOptions = {
   intents: [
@@ -10,12 +20,10 @@ export const discordClientConfig: ClientOptions = {
     IntentsBitField.Flags.GuildPresences
   ],
   presence: {
-    status: 'online',
-    activities: [
-      {
-        name: '/help',
-        type: ActivityType.Listening
-      }
-    ]
+    status: (await SettingsService.getInstance().getDiscordSettings()).botStatus,
+    activities: (await SettingsService.getInstance().getDiscordSettings()).activities.map(activity => ({
+      name: activity.name,
+      type: activityTypeMap[activity.type] || ActivityType.Playing,
+    }))
   }
 };
