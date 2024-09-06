@@ -21,6 +21,8 @@ export default class EventHandler {
     const collection = new Collection<string, IEvent>();
     const files = await getFilesByDir('event-list', 'events');
 
+    if (!files) return;
+    
     files.forEach(file => {
       collection.set(file.data.name, file);
     });

@@ -1,10 +1,10 @@
-import SecretConfigServiceInterface from 'src/common/interfaces/secret-config-service.interface';
-import { secretConfigService } from 'src/common/secret-config.service';
+import SecretConfigServiceInterface from '../../common/interfaces/secret-config-service.interface';
+import { secretConfigService } from '../../common/secret-config.service';
 import MemberTrackingCron from '../members.tracker';
 import MembersManagerInterface from './interfaces/members.manager.interface';
-import { ConsoleStatusHandler } from 'src/common/console.status.handler';;
-import SettingsServiceInterface from 'src/common/interfaces/settings-service.interface';
-import SettingsService from 'src/common/settings.service';
+import { ConsoleStatusHandler } from '../../common/console.status.handler';;
+import SettingsServiceInterface from '../../common/interfaces/settings-service.interface';
+import SettingsService from '../../common/settings.service';
 
 export default class MembersManager implements MembersManagerInterface {
   private static instance: MembersManager;

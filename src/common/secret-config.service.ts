@@ -22,11 +22,11 @@ class SecretConfigService implements SecretConfigServiceInterface {
   }
 
   get isDevelopment(): boolean {
-    return process.env.TZ === 'development';
+    return process.env.NODE_ENV === 'development';
   }
 
   get isProduction(): boolean {
-    return process.env.TZ === 'production';
+    return process.env.NODE_ENV === 'production';
   }
 
   private getString(key: string, defaultValue: string = ''): string {

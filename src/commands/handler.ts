@@ -22,6 +22,8 @@ export default class CommandHandler {
   public async getCommandsFromDirectory(): Promise<Collection<string, ICommand>> {
     const collection = new Collection<string, ICommand>();
     const files = await getFilesByDir('command-list', 'commands');
+
+    if (!files) return;
   
     files.forEach(file => {
       collection.set(file.data.name, file);

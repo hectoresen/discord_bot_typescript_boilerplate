@@ -1,8 +1,8 @@
 import { CommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import ICommand from '../../interfaces/command.interface';
 import ExtendedClient from '../../../client/interfaces/discord-extended.interface';
-import { secretConfigService } from 'src/common/secret-config.service';
-import { ConsoleStatusHandler } from 'src/common/console.status.handler';
+import { secretConfigService } from '../../../common/secret-config.service';
+import { ConsoleStatusHandler } from '../../../common/console.status.handler';
 
 const roles = secretConfigService.discordRoles;
 

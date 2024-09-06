@@ -1,5 +1,5 @@
 import { ActivityType, ClientOptions, IntentsBitField } from 'discord.js';
-import SettingsService from 'src/common/settings.service';
+import SettingsService from '../../common/settings.service';
 
 const activityTypeMap: { [key: string]: ActivityType } = {
   'Playing': ActivityType.Playing,
@@ -10,20 +10,22 @@ const activityTypeMap: { [key: string]: ActivityType } = {
   'Competing': ActivityType.Competing
 };
 
-export const discordClientConfig: ClientOptions = {
-  intents: [
-    // https://discord.com/developers/docs/topics/gateway#list-of-intents
-    IntentsBitField.Flags.Guilds,
-    IntentsBitField.Flags.GuildMessages,
-    IntentsBitField.Flags.GuildMembers,
-    IntentsBitField.Flags.GuildVoiceStates,
-    IntentsBitField.Flags.GuildPresences
-  ],
-  presence: {
-    status: (await SettingsService.getInstance().getDiscordSettings()).botStatus,
-    activities: (await SettingsService.getInstance().getDiscordSettings()).activities.map(activity => ({
-      name: activity.name,
-      type: activityTypeMap[activity.type] || ActivityType.Playing,
-    }))
-  }
+export const getDiscordClientConfig = async (): Promise<ClientOptions> => {
+  const discordSettings = await SettingsService.getInstance().getDiscordSettings();
+  return {
+    intents: [
+      IntentsBitField.Flags.Guilds,
+      IntentsBitField.Flags.GuildMessages,
+      IntentsBitField.Flags.GuildMembers,
+      IntentsBitField.Flags.GuildVoiceStates,
+      IntentsBitField.Flags.GuildPresences,
+    ],
+    presence: {
+      status: discordSettings.botStatus,
+      activities: discordSettings.activities.map(activity => ({
+        name: activity.name,
+        type: activityTypeMap[activity.type] || ActivityType.Playing,
+      }))
+    }
+  };
 };
