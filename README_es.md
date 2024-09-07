@@ -69,7 +69,7 @@ Para que esta funcionalidad funcione correctamente, debes ir al portal de desarr
 
 - ### Añadir comandos
 
-Iremos añadiendo diferentes comandos. Próximamente.
+Este bot incluye comandos de ejemplo como `ping`, `help`, y comandos de moderación como `kick` y `timeout`, entre otros. Para añadir tus propios comandos personalizados, consulta aquí: [Comandos](./docs/commands/commands_es.md)
 
 ---
 

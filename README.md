@@ -65,7 +65,8 @@ Currently it will only write to the console a list of users who are online or of
 For this functionality to work correctly you must go to the Discord developer portal and activate `presence intent` and server `members intent` in your application. [Discord developer portal](https://discord.com/developers/applications).
 
 - ### Adding commands
-We will add different commands. Cooming soon
+
+This bot includes example commands such as `ping`, `help`, and moderation commands like `kick` and `timeout`, among others. To add your own custom commands, refer to this guide: [Commands](./docs/commands/commands.md).
 
 ---
 
