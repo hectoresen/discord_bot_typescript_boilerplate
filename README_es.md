@@ -83,7 +83,7 @@ Una vez que hayas creado los roles, copia sus identificadores y pégalos en el a
 
 Reinicia el bot para aplicar los cambios.
 
-> [!IMPORTANTE]  
+> [!IMPORTANT]  
 > Ten en cuenta que el bot solo podrá expulsar a miembros del servidor con roles inferiores al suyo. Un moderador no puede expulsar a otro moderador o administrador. Un administrador no puede expulsar a otros administradores, pero puede expulsar a otros moderadores. Ambos roles podrán expulsar a todos los miembros con roles inferiores. Asegúrate de configurar esto correctamente en tu servidor de Discord.
 
 - ### Registros de moderación
