@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  bot:
+    build:
+      context: .
+      args:
+        NODE_ENV: ${NODE_ENV}
+    env_file: .env
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=${NODE_ENV}
+    command: sh -c "npm run build && ( [ \"$NODE_ENV\" = \"production\" ] && npm run prod || npm run dev )"

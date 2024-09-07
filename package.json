@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "dev": "tsx watch src/main.ts",
+    "prod": "node dist/main.js",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix"
   },

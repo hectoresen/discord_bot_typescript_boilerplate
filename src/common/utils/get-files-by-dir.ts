@@ -41,7 +41,8 @@ export const getFilesByDir = async (folderName: string, toHandler: string): Prom
 
     const files = entries
       .filter(file => !file.isDirectory())
-      .filter(file => extname(file.name) === '.js')
+      .filter(file => ['.js', '.ts'].includes(extname(file.name)))
+      .filter(file => !file.name.endsWith('.d.ts'))
       .map(file => resolve(dirPath, file.name));
 
     const folders = entries.filter(folder => folder.isDirectory());

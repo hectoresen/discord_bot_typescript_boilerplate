@@ -1,18 +1,35 @@
 # Discord bot boilerplate (Typescript) 1.0
 
-Default template to start projects with discord.js
+Discord bot template in TypeScript, with support to run with or without Docker.
+This is the English version of the documentation.
 
-### How to start
+[Read this in Spanish](README_es.md)
 
-(1) Make sure you have nvm installed and run `nvm use`, nvm will look for the .nvmrc file to ensure the correct version of the project, make sure you are in the project raid.
+## How to start
 
-(2) Copy the .env.dist file as .env, it is where your environment variables will be defined, the .env file is inside gitignore and it will never be uploaded, remember to add the environment variables without the values ​​to your .env.dist to always have an example in your repository. To do this you can run the following command `cp .env.dist .env`
+### Initial setup and invitation of the bot to your server
 
-(3) Go to the discord developer portal, create a new app and copy the token into your .env as the value of the DISCORD_TOKEN variable. [Discord developer portal](https://discord.com/developers/applications).
+1. Make sure you have nvm installed and run `nvm use`, nvm will look for the .nvmrc file to ensure the correct version of the project, make sure you are in the project raid.
 
-(4) Within the discord developer portal in the OAuth2 section you can generate a link to invite the bot to your discord server, in scopes for example you can bot and in Administrator permissions, then copy the URL and paste it in your browser, then select your server and that's it.
+2. Copy the .env.dist file as .env, it is where your environment variables will be defined, the .env file is inside gitignore and it will never be uploaded, remember to add the environment variables without the values ​​to your .env.dist to always have an example in your repository. To do this you can run the following command `cp .env.dist .env`
 
-(5) Once your bot is inside the server you will see it in *offline status*, go to the console in the project raid and run `npm run dev`, you should now see the bot in *online status*.
+3. Go to the discord developer portal, create a new app and copy the token into your .env as the value of the `DISCORD_TOKEN` variable. [Discord developer portal](https://discord.com/developers/applications).
+
+4. Within the discord developer portal in the OAuth2 section you can generate a link to invite the bot to your discord server, in scopes for example you can bot and in Administrator permissions, then copy the URL and paste it in your browser, then select your server and that's it.
+
+### Without docker
+
+After completing the steps above, run `npm run dev` to start the bot in development mode. Make sure the `NODE_ENV` environment variable is set to `development`. In this mode, the server will detect any changes to the code and automatically restart the bot to apply the changes.
+
+To start the bot in production mode without Docker, make sure the `NODE_ENV` environment variable is set to `production`. Then run `npm run build` and finally `npm run prod`, which will run the compiled code. Unlike development mode, you must create a new build every time you make changes to the code.
+
+### With docker
+This project is configured to work with or without docker.
+To start the project in development mode with docker, run the `docker compose up` command. Make sure your `NODE_ENV` environment variable is set to `development` before running the command
+
+If you want to start the project in production mode with docker, modify the environment variable in your .env `NODE_ENV` to `production` and run the docker compose up command.
+
+The difference is that in development mode the bot will listen to the changes you make to the code every time you save and in production mode you must make a new compilation of the code.
 
 ---
 
