@@ -2,18 +2,18 @@ export class ConsoleStatusHandler {
   private statusIcons: Record<'ok' | 'loading' | 'error', string> = {
     ok: '✅',
     loading: '🔄',
-    error: '❌'
-  };
+    error: '❌',
+  }
 
   constructor(
     private icon: string,
     private message: string,
-    private status: 'ok' | 'loading' | 'error',
+    private status: 'ok' | 'loading' | 'error'
   ) {
-    console.info(`[${this.getIconStatus()}] [${this.icon}] ${this.message}`);
+    console.info(`[${this.getIconStatus()}] [${this.icon}] ${this.message}`)
   }
 
   private getIconStatus() {
-    return this.statusIcons[this.status] || '❔';
+    return this.statusIcons[this.status] || '❔'
   }
 }

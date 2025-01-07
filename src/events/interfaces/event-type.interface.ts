@@ -1,3 +1,3 @@
 export default interface IEventType {
-    [key: string]: (interaction: any) => void;
-};
+  [key: string]: (interaction: any) => void
+}

@@ -1,17 +1,18 @@
-import { ActivityType, ClientOptions, IntentsBitField } from 'discord.js';
-import SettingsService from '../../common/settings.service';
+import { ActivityType, ClientOptions, IntentsBitField } from 'discord.js'
+import SettingsService from '../../common/settings.service'
 
 const activityTypeMap: { [key: string]: ActivityType } = {
-  'Playing': ActivityType.Playing,
-  'Streaming': ActivityType.Streaming,
-  'Listening': ActivityType.Listening,
-  'Watching': ActivityType.Watching,
-  'Custom': ActivityType.Custom,
-  'Competing': ActivityType.Competing
-};
+  Playing: ActivityType.Playing,
+  Streaming: ActivityType.Streaming,
+  Listening: ActivityType.Listening,
+  Watching: ActivityType.Watching,
+  Custom: ActivityType.Custom,
+  Competing: ActivityType.Competing,
+}
 
 export const getDiscordClientConfig = async (): Promise<ClientOptions> => {
-  const discordSettings = await SettingsService.getInstance().getDiscordSettings();
+  const discordSettings =
+    await SettingsService.getInstance().getDiscordSettings()
   return {
     intents: [
       IntentsBitField.Flags.Guilds,
@@ -22,10 +23,10 @@ export const getDiscordClientConfig = async (): Promise<ClientOptions> => {
     ],
     presence: {
       status: discordSettings.botStatus,
-      activities: discordSettings.activities.map(activity => ({
+      activities: discordSettings.activities.map((activity) => ({
         name: activity.name,
         type: activityTypeMap[activity.type] || ActivityType.Playing,
-      }))
-    }
-  };
-};
+      })),
+    },
+  }
+}

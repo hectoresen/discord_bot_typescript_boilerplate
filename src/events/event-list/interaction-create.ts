@@ -1,6 +1,6 @@
-import ExtendedClient from '../../client/interfaces/discord-extended.interface';
-import CommandHandler from '../../commands/handler';
-import { ConsoleStatusHandler } from '../../common/console.status.handler';
+import ExtendedClient from '../../client/interfaces/discord-extended.interface'
+import CommandHandler from '../../commands/handler'
+import { ConsoleStatusHandler } from '../../common/console.status.handler'
 
 const interactionCreateEvent = {
   data: {
@@ -8,18 +8,21 @@ const interactionCreateEvent = {
     once: false,
   },
   execute: async (client: ExtendedClient, interaction: any) => {
-    const commandHandler = CommandHandler.getInstance();
-    const command = commandHandler.getCommands().get(interaction.commandName);
+    const commandHandler = CommandHandler.getInstance()
+    const command = commandHandler.getCommands().get(interaction.commandName)
 
-    if (!command) return;
+    if (!command) return
 
     try {
-      command.run(client, interaction);
+      command.run(client, interaction)
     } catch (error) {
-      interaction.reply({ content: 'There was an error executing the command.', ephemeral: true });
-      new ConsoleStatusHandler('🤖', `${error}`, 'error');
+      interaction.reply({
+        content: 'There was an error executing the command.',
+        ephemeral: true,
+      })
+      new ConsoleStatusHandler('🤖', `${error}`, 'error')
     }
-  }
-};
+  },
+}
 
-export default interactionCreateEvent;
+export default interactionCreateEvent
